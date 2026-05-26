@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Calculate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="piano-case">
+        <div class="branding">Music Calculate</div>
+        
+        <div class="display-row">
+            <div class="display-panel">
+                <div id="history"></div>
+                <div id="result">0</div>
+            </div>
+            <button class="backspace-btn" data-action="backspace">⌫</button>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-container">
+                
+                <img src="hands.png" id="user-hands" alt="Руки">
+                
+                <div class="keyboard">
+                    <div class="key-group">
+                        <button class="key white" data-val="1"><span class="label">1</span><span class="note">До</span></button>
+                        <button class="key black op" data-action="add">+</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="2"><span class="label">2</span><span class="note">Ре</span></button>
+                        <button class="key black op" data-action="sub">-</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="3"><span class="label">3</span><span class="note">Ми</span></button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="4"><span class="label">4</span><span class="note">Фа</span></button>
+                        <button class="key black op" data-action="mul">×</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="5"><span class="label">5</span><span class="note">Соль</span></button>
+                        <button class="key black op" data-action="div">÷</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="6"><span class="label">6</span><span class="note">Ля</span></button>
+                        <button class="key black op" data-action="pow">^</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="7"><span class="label">7</span><span class="note">Си</span></button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="8"><span class="label">8</span><span class="note">До</span></button>
+                        <button class="key black op" data-action="sqrt">√</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="9"><span class="label">9</span><span class="note">Ре</span></button>
+                        <button class="key black service" data-action="clear">C</button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="0"><span class="label">0</span><span class="note">Ми</span></button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white" data-val="."><span class="label">.</span><span class="note">Fx</span></button>
+                    </div>
+                    <div class="key-group">
+                        <button class="key white play" data-action="equal"><span class="label">=</span><span class="note">ИГРАТЬ</span></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="external-hints">
+                <div class="hint-title">Шпаргалка Мелодий</div>
+                <div class="hint-item">Елочка: 1 6 6 5 6 1 + 4 3 3 2 2 1</div>
+                <div class="hint-item">Happy Birthday: 1 1 2 1 4 3 + 1 1 2 1 5 4</div>
+                <div class="hint-item">Jingle Bells: 3 3 3 + 3 3 3 + 3 5 1 2 3</div>
+                <div class="hint-item">Harry Potter: 3 6 8 7 6 0 + 9 + 7</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

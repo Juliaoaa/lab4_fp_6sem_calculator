@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f5;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    overflow: hidden; 
+}
+
+.piano-case {
+    background: #fff8f0;
+    width: fit-content; 
+    max-width: 98vw;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(181, 147, 83, 0.4), inset 0 2px 5px rgba(255,255,255,0.7);
+    border: 2px solid #e2d2ba;
+    position: relative;
+}
+
+.branding {
+    color: #b59353;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.display-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.display-panel {
+    flex-grow: 1;
+    background: #e1e9f0;
+    border: 2px solid #b59353;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: right;
+    box-shadow: inset 0 5px 15px rgba(181, 147, 83, 0.3);
+    overflow: hidden; 
+    min-width: 0;
+}
+
+#history { font-size: 1rem; color: #768da3; height: 18px; margin-bottom: 5px; white-space: nowrap; overflow: hidden; }
+#result { font-size: 2.5rem; color: #213a52; font-family: 'Courier New', Courier, monospace; font-weight: bold; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+#result::-webkit-scrollbar { display: none; }
+
+.backspace-btn {
+    background: radial-gradient(circle at 30% 30%, #e2d2ba 0%, #b59353 100%);
+    color: white; border: 1px solid #91753c; border-radius: 6px; padding: 0 25px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 10px rgba(181, 147, 83, 0.4); transition: all 0.1s; outline: none;
+}
+.backspace-btn:active { transform: translateY(2px); box-shadow: 0 2px 4px rgba(181, 147, 83, 0.4); }
+
+.keyboard-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.keyboard-container {
+    position: relative;
+    width: max-content;
+}
+
+/* --- МАГИЯ РУК --- */
+#user-hands {
+    position: absolute;
+    bottom: -800px; /* Прячем далеко под экран */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px; /* Размер рук */
+    z-index: 10;
+    pointer-events: none; /* Чтобы мышка прокликивала сквозь них */
+    transition: bottom 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.1s;
+}
+
+
+#user-hands.active {
+    bottom: -80px; 
+}
+
+/* Удар по клавишам */
+#user-hands.strike {
+    transform: translateX(-50%) translateY(-20px) scale(0.98); 
+}
+
+
+.keyboard {
+    display: flex;
+    background: #213a52;
+    padding: 10px 10px 0 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.key-group { position: relative; margin-right: 2px; }
+.key-group:last-child { margin-right: 0; }
+.key { border: none; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; transition: all 0.1s; outline: none; }
+
+.white {
+    width: 50px; height: 180px; background: #fff; border: 1px solid #ccc; border-radius: 0 0 5px 5px; box-shadow: 0 4px 5px rgba(0,0,0,0.2); padding-bottom: 15px; color: #333;
+}
+.white:active { background: #e0e0e0; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.white .label { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
+.white .note { font-size: 0.7rem; color: #888; }
+.white.play { background: #b59353; color: white; border-color: #91753c; }
+.white.play .note { font-size: 0.55rem; letter-spacing: -0.5px; } 
+
+.black {
+    position: absolute; top: 0; right: -18px; width: 36px; height: 110px; background: radial-gradient(circle at 30% 30%, #444 0%, #111 100%); border-radius: 0 0 4px 4px; z-index: 2; box-shadow: 0 5px 8px rgba(0,0,0,0.6); color: white; font-size: 1.2rem; padding-bottom: 12px;
+}
+.black:active { height: 108px; background: #000; box-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+
+.key.active-play {
+    background: #e2d2ba; box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 2px 10px rgba(181, 147, 83, 0.3); transform: translateY(4px); color: #b59353; z-index: 5;
+}
+
+
+.external-hints {
+    min-width: 240px; background: #e1e9f0; padding: 20px; border-radius: 8px; border: 1px solid #b59353; box-shadow: inset 0 2px 5px rgba(181, 147, 83, 0.2); box-sizing: border-box;
+}
+.hint-title { color: #b59353; font-weight: bold; font-size: 1rem; margin-bottom: 15px; border-bottom: 1px solid #b59353; padding-bottom: 5px; }
+.hint-item { color: #213a52; font-family: 'Courier New', monospace; font-size: 0.8rem; margin-bottom: 10px; line-height: 1.4; }
